@@ -1,0 +1,63 @@
+﻿@model Deneme.Models.Entity.SATISLAR
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/MainLayout.cshtml";
+}
+
+<h1 align="center">Satış Yap</h1>
+<hr style="height:2px;border-width:0;color:gray;background-color:gray">
+<br /><br />
+      
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Modal1">
+              Getir
+          </button>
+      @*  <input type="text"  id="id" />*@
+         
+
+          @* Popup Modal Kullanımı *@
+
+          <div class="modal fade" id="Modal1" tabindex="-1" aria-labelledby="Modal1" aria-hidden="true">
+              <div class="modal-dialog">
+                  <div class="modal-content">
+                      <div class="modal-header">
+                          <h5 class="modal-title" id="Modal1">Satış Yap</h5> &nbsp;&nbsp;
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+                      </div>
+                      <form action="/Satis/SatisYap" method="post">
+
+                          <div class="modal-body">
+
+                     
+                              @Html.LabelFor(m => m.URUN)
+                              @Html.TextBoxFor(m => m.URUN, new { @class = "form-control" })
+
+                              @Html.LabelFor(m => m.MUSTERI)
+
+                                  @Html.DropDownListFor(m => m.MUSTERILER.MUSTERIID, (List<SelectListItem>)ViewBag.ktg, new { @class = "form-control" })
+
+                              @*@Html.TextBoxFor(m => m.MUSTERI, new { @class = "form-control" })*@
+                              @Html.LabelFor(m => m.ADET)
+
+                              @Html.TextBoxFor(m => m.ADET, new { @class = "form-control" })
+
+                              @Html.LabelFor(m => m.FIYAT)
+
+                              @Html.TextBoxFor(m => m.FIYAT, new { @class = "form-control" })
+
+                          </div>
+                          @*<button class="btn btn-info">KAYDET</button>*@
+                          <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
+            <button type="submit" class="btn btn-primary">Değişiklikleri Kaydet</button>
+                          </div>
+
+                      </form>
+
+</div>
+              </div>
+          </div>
+
+      
+
+

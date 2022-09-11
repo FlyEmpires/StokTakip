@@ -1,0 +1,30 @@
+﻿@using Deneme.Models.Entity
+@model List<KATEGORILER>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/MainLayout.cshtml";
+}
+<h1 align="center">KATEGORİLER</h1>
+<hr style="height:2px;border-width:0;color:gray;background-color:gray">
+<br /><br />
+<table class="table table-bordered">
+    <tr>
+        <th>KATEGORİ ID</th>
+        <th>KATEGORİ ADI</th>
+        <th>SİL</th>
+        <th>GÜNCELLE</th>
+    </tr>
+    <tbody>
+        @foreach (var ktgr in Model)
+        {
+        <tr>
+            <td>@ktgr.KATEGORIID</td>
+            <td>@ktgr.KATEGORIAD</td>
+            <td><a href="/Kategori/SIL/@ktgr.KATEGORIID"><i class="fa fa-trash-o" style="font-size:30px;color:red;"></i></a></td>
+            <td><a href="/Kategori/KategoriGetir/@ktgr.KATEGORIID"><i class="fa fa-edit" style="font-size:30px"></i></a></td>
+        </tr>
+        }
+    </tbody>
+</table>
+<a href="/Kategori/KategoriEkle" class="btn btn-primary">YENİ KATEGORİ EKLE</a>
+

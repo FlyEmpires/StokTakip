@@ -1,0 +1,109 @@
+﻿@using Deneme.Models.Entity
+
+@*Manuel SAYFALAMA YÖNTEMİ*@
+
+@*------------------------------------*@
+
+@*@using PagedList
+    @using PagedList.Mvc
+    @model PagedList.IPagedList<URUNLER>*@
+
+@*-------------------------------------*@
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/MainLayout.cshtml";
+}
+<head>
+    <link href="/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<h1 align="center">ÜRÜNLER</h1>
+<hr style="height:2px;border-width:0;color:gray;background-color:gray">
+<br /><br />
+
+@*
+    ----- MANUEL SAYFALAMA -----
+
+
+     @using (Html.BeginForm("Index", "Urun", FormMethod.Get))
+     {
+         <b>Aranacak Ürün Adı: </b>
+         @Html.TextBox("search", "", new { @class = "form-control form-control-sm", @style = "width:300px;" })
+         <input type="submit" value="Ara" />
+     }
+*@
+<table id="tbl1" class="table table-bordered">
+    <thead>
+        <tr>
+            <th>ÜRÜN ID</th>
+            <th>ÜRÜN ADI</th>
+            <th>MARKASI</th>
+            <th>KATEGORİ</th>
+            <th>FİYAT</th>
+            <th>STOK</th>
+            <th>SİL</th>
+            <th>GÜNCELLE</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var urn in Model)
+        {
+            <tr>
+                <th>@urn.URUNID</th>
+                <td>@urn.URUNAD</td>
+                <td>@urn.MARKA</td>
+                @if (urn.URUNKATEGORI == null)
+                // üründen gelen kategori id boş ise
+                {
+                    <td>Ürün Kategorisi Belirtilmemiş</td>
+                    // bunu yazdır
+                }
+                else
+                //eğer bir id değeri geliyorsa
+                {
+                    <td>@urn.KATEGORILER.KATEGORIAD</td>// kategorinin adını yazdır
+                }
+
+                @* System.NullReferenceException: Nesne başvurusu bir nesnenin örneğine ayarlanmadı HATASI *@
+                @*<td>@urn.KATEGORILER.KATEGORIAD</td>*@
+
+
+                <td>@urn.FIYAT</td>
+                <td>@urn.STOK</td>
+                <td><a href="/Urun/SIL/@urn.URUNID" onclick="return confirm ('Emin misin?')"><i class="fa fa-trash-o" style="font-size:30px;color:red;"></i></a></td>
+                <td><a href="/Urun/UrunGuncelle/@urn.URUNID"><i class="fa fa-edit" style="font-size:30px"></i></a></td>
+
+
+            </tr>
+        }
+    </tbody>
+</table>
+@*@Html.PagedListPager((IPagedList)Model, sayfaNo => Url.Action("Index", new { sayfaNo }))*@
+
+
+<div>
+    <a href="/Urun/UrunEkle" class="btn btn-primary">Ürün Ekle</a>
+</div>
+<link href="~/Content/DataTables/css/dataTables.bootstrap4.css" rel="stylesheet" />
+<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js "></script>
+
+
+@*<script>
+        $('#tbl1').dataTable({});
+    </script>*@
+
+<script>
+    $('#tbl1').dataTable({
+        language: {
+            url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/tr.json'
+        }
+    });
+    </script>
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+@*<link href="~/Content/bootstrap.css" rel="stylesheet" />*@
+
+@*<link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap.min.css" rel="stylesheet" />*@

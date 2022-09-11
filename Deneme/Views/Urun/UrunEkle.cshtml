@@ -1,0 +1,38 @@
+﻿@model Deneme.Models.Entity.URUNLER
+@{
+    ViewBag.Title = "UrunEkle";
+    Layout = "~/Views/Shared/MainLayout.cshtml";
+}
+
+<h1 align="center"> ÜRÜN EKLE</h1>
+<hr style="height:2px;border-width:0;color:gray;background-color:gray">
+<br /><br />
+<form action="/Urun/UrunEkle" class="form-group" method="post">
+    <div>
+        <label> Ürünün Adı </label>
+        @*@Html.TextBoxFor(m=>m.URUNAD,new { @class = "form-control" })
+        @Html.ValidationMessageFor(m=>m.URUNAD,"",new { @style = "color:red" })*@
+        <input type="text" class="form-control" name="URUNAD" required placeholder="Ürün Adını Giriniz" />
+    </div>
+    <div style="margin-top:15px;">
+        <label> Ürünün Markası </label>
+        <input type="text" class="form-control" name="MARKA" required  placeholder="Ürün Markası Giriniz" />
+    </div>
+    <div style="margin-top:15px;">
+        <label>Ürünün Kategorisi</label>
+        @Html.DropDownListFor(m => m.KATEGORILER.KATEGORIID, (List<SelectListItem>)ViewBag.ktg, new { @class = "form-control" })
+    </div> <div style="margin-top:15px;">
+        <label> Ürünün Fiyatı </label>
+        <input type="text" class="form-control" name="FIYAT" required placeholder="Ürünün Fiyatını Giriniz" />
+    </div>
+    <div style="margin-top:15px;">
+        <label> Ürün Stok Adedi </label>
+        <input type="text" class="form-control" name="STOK" required placeholder="Ürün Stok Adedi Giriniz" />
+    </div>
+    <div style="margin-top:30px;">
+        <button class="btn btn-info">Ürün Ekle</button>
+    </div>
+
+
+</form>
+

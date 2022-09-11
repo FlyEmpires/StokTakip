@@ -1,0 +1,21 @@
+﻿@model Deneme.Models.Entity.MUSTERILER
+@{
+    ViewBag.Title = "MusteriGuncelle";
+    Layout = "~/Views/Shared/MainLayout.cshtml";
+}
+
+@using (Html.BeginForm("MusteriGuncelle", "Musteri", FormMethod.Post))
+{
+    @Html.LabelFor(m => m.MUSTERIID)
+    @Html.HiddenFor(m => m.MUSTERIID)
+    <br />
+    @Html.LabelFor(m => m.MUSTERIAD)
+    @Html.TextBoxFor(m => m.MUSTERIAD, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(m => m.MUSTERISOYAD)
+    @Html.TextBoxFor(m => m.MUSTERISOYAD, new { @class = "form-control" })
+    <br />
+    <div>
+        <button class="btn btn-info">Müşteri Güncelle</button>
+    </div>
+}

@@ -1,0 +1,38 @@
+﻿@model Deneme.Models.Entity.MUSTERILER
+@{
+    ViewBag.Title = "MusteriEkle";
+    Layout = "~/Views/Shared/MainLayout.cshtml";
+}
+<h1 align="center"> MÜŞTERİ EKLE</h1>
+<hr style="height:2px;border-width:0;color:gray;background-color:gray">
+<br /><br />
+      <form action="/Musteri/MusteriEkle" class="form-group" method="post">
+          <div>
+              <label> Müşteri Adı </label>
+              @Html.TextBoxFor(m=>m.MUSTERIAD,new {@class="form-control",@id="txtAd", placeholder="Müşteri Adını Giriniz",required="" })
+              @*<input type="text" class="form-control" name="MUSTERIAD" required placeholder="Müşteri Adını Giriniz" />*@
+          </div>
+          <div style="margin-top:15px;">
+              <label> Müşteri Soyadı </label>
+              @Html.TextBoxFor(m=>m.MUSTERISOYAD,new {@class="form-control",placeholder="Müşteri Soyadını Giriniz",required="",@id="txtSoyad" })
+              @*<input type="text" class="form-control" name="MUSTERISOYAD" required placeholder="Müşteri Soyadını Giriniz" />*@
+          </div>
+
+          <div style="margin-top:30px;">
+              <button onclick="mesaj()" class="btn btn-info">Müşteri Ekle</button>
+          </div>
+
+
+      </form>
+
+<script>
+    function mesaj() {
+        if (document.getElementById("txtAd").value == "" || document.getElementById("txtSoyad").value == "") {
+            alert("Ekleme İşlemi Gerçekleşmedi.!")
+        }
+        else {
+            alert("Ekleme İşlemi Gerçekleşti");
+        }
+    }
+
+</script>

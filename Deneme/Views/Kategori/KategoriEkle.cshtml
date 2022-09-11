@@ -1,0 +1,21 @@
+﻿@model Deneme.Models.Entity.KATEGORILER
+@{
+    ViewBag.Title = "KategoriEkle";
+    Layout = "~/Views/Shared/MainLayout.cshtml";
+}
+<h1 align="center">KATEGORİ EKLE</h1>
+<hr style="height:2px;border-width:0;color:gray;background-color:gray">
+<br /><br />
+
+<form action="/Kategori/KategoriEkle" method="post" class="form-group">
+    <div>
+        <label>Kategori Adı</label>
+        @Html.TextBoxFor(m=>m.KATEGORIAD)
+        @Html.ValidationMessageFor(m => m.KATEGORIAD, "", new{@style="color:red;margin-left:10px;font-style:italic;"})
+        @*<input type="text" class="form-control" name="KATEGORIAD" required placeholder="ÖRN: MOBİL" />*@
+    </div>
+
+    <div style="margin-top:30px;">
+        <button class="btn btn-info">EKLE</button>
+    </div>
+</form>
