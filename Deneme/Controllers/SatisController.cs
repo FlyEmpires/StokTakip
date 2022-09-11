@@ -34,8 +34,11 @@ namespace Deneme.Controllers
         {
             var ktg = ent.MUSTERILER.Where(m => m.MUSTERIID == s.MUSTERILER.MUSTERIID).FirstOrDefault();
             s.MUSTERILER = ktg;
+
+            // ------- Satış Yapıldığında var olan stok sayısından satılan adet kadar düşsün
             var urun = ent.URUNLER.FirstOrDefault(x=>x.URUNID==s.URUN);
             urun.STOK = Convert.ToByte((urun.STOK - s.ADET));
+            // --------
             ent.SATISLAR.Add(s);
             ent.SaveChanges();
             return RedirectToAction("Index");
